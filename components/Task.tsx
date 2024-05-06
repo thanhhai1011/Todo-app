@@ -31,7 +31,14 @@ const Task: React.FC<IProps> = props => {
         <Text style={styles.itemText}>{title}</Text>
       </View>
       {/* <View style={styles.circular}></View> */}
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity onPress={onPress} style={{ flexDirection: 'row' }}>
+        {isCheck && (
+          <View style={styles.containerComplete}>
+            <Text style={{
+              fontSize: 10
+            }}>Task complete</Text>
+          </View>
+        )}
         <Ionicons name="trash" size={32} color={"red"} />
       </TouchableOpacity>
     </Animated.View>
@@ -65,5 +72,14 @@ const styles = StyleSheet.create({
     borderColor: '#55BCF6',
     borderRadius: 5,
     borderWidth: 2
+  },
+  containerComplete: {
+    borderWidth: 1,
+    padding: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: 'green',
+    borderRadius: 10,
+    marginRight: 5
   }
 })
